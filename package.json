@@ -5,8 +5,9 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "pub": "nodemon publisher.js",
-    "sub": "nodemon subscriber.js"
+    "start": "nodemon app.js",
+    "pub": "nodemon src/mqtt/publisher.js",
+    "sub": "nodemon src/mqtt/subscriber.js"
   },
   "author": "",
   "license": "ISC",
