@@ -1,12 +1,12 @@
 import { connect } from 'mqtt'
 import { connectOptions } from './options/connectOptions.js'
+import { topicOptions } from './options/topicOptions.js'
 
 let client = connect(connectOptions)
-const topic = 'test/connection'
 
 client.on('connect', (connack) => {
     console.log('subscriber client connected', connack)
-    client.subscribe(topic, { qos: 1 }, (err, granted) => {
+    client.subscribe(topicOptions.random, { qos: 1 }, (err, granted) => {
         if (err) {
             console.log(err, 'err')
         }

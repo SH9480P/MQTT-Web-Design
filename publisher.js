@@ -1,9 +1,9 @@
 import { connect } from 'mqtt'
 import { connectOptions } from './options/connectOptions.js'
+import { topicOptions } from './options/topicOptions.js'
 import { getRandomValues } from 'crypto'
 
 const client = connect(connectOptions)
-const topic = 'test/connection'
 
 client.on('connect', (connack) => {
     console.log('publisher client connected', connack)
@@ -44,7 +44,7 @@ setInterval(() => {
         },
     }
     client.publish(
-        topic,
+        topicOptions.random,
         JSON.stringify(payload),
         publishOption,
         (err, packet) => {
