@@ -1,5 +1,5 @@
 import express from 'express'
-import { createProblem, getProblems } from '../services/problem.js'
+import { createProblem, deleteProblem, getProblems } from '../services/problem.js'
 
 export const problemRouter = express.Router()
 
@@ -8,6 +8,9 @@ problemRouter.get('/', async (req, res) => {
 })
 
 problemRouter.post('/', async (req, res) => {
-    await createProblem()
-    res.sendStatus(201)
+    res.json(await createProblem())
+})
+
+problemRouter.delete('/', async (req, res) => {
+    res.json(await deleteProblem())
 })
