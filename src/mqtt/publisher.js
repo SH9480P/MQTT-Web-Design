@@ -5,7 +5,7 @@ import { getRandomValues } from 'crypto'
 
 const client = connect(connectOptions)
 
-client.on('connect', (connack) => {
+client.on('connect', async (connack) => {
     console.log('publisher client connected', connack)
 })
 
@@ -32,7 +32,7 @@ client.on('offline', () => {
 
 setInterval(() => {
     const payload = {
-        randomValue: getRandomValues(new Uint16Array(2))[0].toString(),
+        randomValue: getRandomValues(new Uint16Array(2))[0],
     }
     const publishOption = {
         qos: 1,
